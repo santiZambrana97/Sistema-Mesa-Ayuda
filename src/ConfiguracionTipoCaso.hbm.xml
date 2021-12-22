@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class name="entidades.ConfiguracionTipoCaso" table="configuracion_tipocaso">
+
+        <id name="OID" type="string">
+            <column name="OIDConfiguracionTipoCaso"/>
+            <generator class="uuid2"/>
+        </id>
+
+        <property name="nroConfigTC" type="int">
+            <column name="nroConfig"/>
+        </property>
+
+        <property name="fechaInicioVigencia" type="date">
+            <column name="fechaInicioVigencia"/>
+        </property>
+        
+        <property name="fechaFinVigencia" type="date">
+            <column name="fechaFinVigencia"/>
+        </property>
+        
+        <property name="fechaVerificacion" type="timestamp">
+            <column name="fechaVerificacion"/>
+        </property>
+        
+        <many-to-one name="tipoCaso" class="entidades.TipoCaso" column="OIDTipoCaso" not-null="true"/>
+         
+        <bag name="tipoCtipoIns" table="tipocaso_tipoinstancia" cascade="save-update" inverse="false"> 
+            <key column="OIDConfiguracionTipoCaso" not-null="false"/> 
+            <one-to-many class="entidades.TipoCasoTipoInstancia"/> 
+        </bag>
+
+    </class>
+
+</hibernate-mapping>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class name="entidades.TipoCasoTipoInstancia" table="tipocaso_tipoinstancia">
+
+        <id name="OID" type="string">
+            <column name="OIDTipoCasoTipoInstancia"/>
+            <generator class="uuid2"/>
+        </id>
+
+        <property name="minutosMaximoResolucion" type="int">
+            <column name="minutosMaximoResolucion"/>
+        </property>
+
+        <property name="ordenTipoCasoTipoInstancia" type="int">
+            <column name="ordenTipoCasoTipoInstancia"/>
+        </property>
+        
+        
+        <many-to-one name="tipoInstancia" class="entidades.TipoInstancia" column="OIDTipoInstancia" not-null="true"/>
+        
+       
+       
+
+    </class>
+
+</hibernate-mapping>
